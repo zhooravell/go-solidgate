@@ -10,6 +10,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+// Signer is interface to sine request
 // https://solidgate.atlassian.net/wiki/spaces/API/pages/4784199/Access+to+SolidGate+Gateway+API
 type Signer interface {
 	Sine(payload []byte) (string, error)
@@ -20,11 +21,12 @@ type sha512Signer struct {
 	privateKey []byte
 }
 
-// Constructor for sha512Signer
+// NewSha512Signer return sha512Signer
 func NewSha512Signer(merchantID string, privateKey []byte) Signer {
 	return &sha512Signer{merchantID: merchantID, privateKey: privateKey}
 }
 
+// Sine is function to sine request body
 // Value of a signature is base64-coding of hash function SHA-512
 func (rcv *sha512Signer) Sine(payload []byte) (string, error) {
 	// merchantId + requestJsonData + merchantId

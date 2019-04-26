@@ -63,6 +63,10 @@ func TestNewInitPaymentRequest(t *testing.T) {
 	if customerEmail != r.customerEmail {
 		t.Fatalf("customerEmail not equal")
 	}
+}
+
+func TestInitPaymentRequest_SetURLs(t *testing.T) {
+	r := InitPaymentRequest{}
 
 	failURL, err := url.Parse("http://merchant.example/fail")
 

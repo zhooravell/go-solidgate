@@ -6,6 +6,7 @@ import (
 	"net/url"
 )
 
+// RecurringRequest structure to represent recurring request data
 // https://solidgate.atlassian.net/wiki/spaces/API/pages/4686126/Recurring+transaction
 type RecurringRequest struct {
 	amount                    int
@@ -21,6 +22,7 @@ type RecurringRequest struct {
 	chargebackNotificationURL *url.URL
 }
 
+// SetChargebackNotificationURL to set url
 // Set URL of merchant page, which a customer will be redirected in case successful payment
 func (rcv *RecurringRequest) SetChargebackNotificationURL(url *url.URL) *RecurringRequest {
 	rcv.chargebackNotificationURL = url
@@ -28,6 +30,7 @@ func (rcv *RecurringRequest) SetChargebackNotificationURL(url *url.URL) *Recurri
 	return rcv
 }
 
+// SetCallbackURL to set url
 // Set URL of merchant page, where response with payment result will be sent
 func (rcv *RecurringRequest) SetCallbackURL(url *url.URL) *RecurringRequest {
 	rcv.callbackURL = url
@@ -35,6 +38,7 @@ func (rcv *RecurringRequest) SetCallbackURL(url *url.URL) *RecurringRequest {
 	return rcv
 }
 
+// SetStatusURL to set url
 // URL of merchant page, which a customer will be redirected in case successful payment
 func (rcv *RecurringRequest) SetStatusURL(url *url.URL) *RecurringRequest {
 	rcv.statusURL = url
@@ -42,7 +46,7 @@ func (rcv *RecurringRequest) SetStatusURL(url *url.URL) *RecurringRequest {
 	return rcv
 }
 
-// Constructor for RecurringRequest
+// NewRecurringRequest return RecurringRequest with mandatory parameters
 func NewRecurringRequest(
 	amount int,
 	currency string,

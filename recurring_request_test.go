@@ -64,6 +64,11 @@ func TestNewRecurringRequest(t *testing.T) {
 		t.Fatalf("customerEmail not equal")
 	}
 
+}
+
+func TestRecurringRequest_SetURLs(t *testing.T) {
+	r := RecurringRequest{}
+
 	statusURL, err := url.Parse("http://merchant.example/status")
 
 	if err != nil {

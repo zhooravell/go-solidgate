@@ -93,6 +93,10 @@ func TestNewChargeRequest(t *testing.T) {
 	if customerEmail != r.customerEmail {
 		t.Fatalf("customerEmail not equal")
 	}
+}
+
+func TestNewChargeRequest_SetURLS(t *testing.T) {
+	r := ChargeRequest{}
 
 	statusURL, err := url.Parse("http://merchant.example/status")
 

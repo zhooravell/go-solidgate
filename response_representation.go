@@ -1,10 +1,12 @@
 package solidgate
 
+// InitPaymentResponse to represent init payment response
 type InitPaymentResponse struct {
 	Order   Order   `json:"order"`
 	PayForm PayForm `json:"pay_form"`
 }
 
+// ChargeResponse to represent charge response
 type ChargeResponse struct {
 	Transactions   map[string]Transaction `json:"transactions"`
 	Order          Order                  `json:"order"`
@@ -12,6 +14,7 @@ type ChargeResponse struct {
 	PaymentAdviser PaymentAdviser         `json:"payment_adviser"`
 }
 
+// RecurringResponse to represent recurring response
 type RecurringResponse struct {
 	Transactions   map[string]Transaction `json:"transactions"`
 	Order          Order                  `json:"order"`
@@ -19,12 +22,14 @@ type RecurringResponse struct {
 	PaymentAdviser PaymentAdviser         `json:"payment_adviser"`
 }
 
+// RefundResponse to represent refund response
 type RefundResponse struct {
 	Order        Order                  `json:"order"`
 	Transaction  Transaction            `json:"transaction"`
 	Transactions map[string]Transaction `json:"transactions"`
 }
 
+// StatusResponse to represent status response
 type StatusResponse struct {
 	Transactions   map[string]Transaction `json:"transactions"`
 	Chargebacks    map[string]Chargeback  `json:"chargebacks"`
@@ -32,6 +37,7 @@ type StatusResponse struct {
 	PaymentAdviser `json:"payment_adviser"`
 }
 
+// Order to represent order in response
 type Order struct {
 	OrderID            string `json:"order_id"`
 	Amount             int    `json:"amount"`
@@ -48,11 +54,13 @@ type Order struct {
 	Descriptor         string `json:"descriptor,omitempty"`
 }
 
+// PayForm to represent pay form in response
 type PayForm struct {
 	Token      string `json:"token"`
 	DesignName string `json:"design_name"`
 }
 
+// Card to represent card in response
 type Card struct {
 	Bank         string    `json:"bank"`
 	Bin          string    `json:"bin"`
@@ -65,10 +73,12 @@ type Card struct {
 	CardToken    CardToken `json:"card_token,omitempty"`
 }
 
+// CardToken to represent card token in response
 type CardToken struct {
 	Token string `json:"token"`
 }
 
+// Transaction to represent transaction in response
 type Transaction struct {
 	ID        string    `json:"id"`
 	Operation string    `json:"operation"`
@@ -80,15 +90,18 @@ type Transaction struct {
 	Fee       Fee       `json:"fee,omitempty"`
 }
 
+// PaymentAdviser to represent payment adviser in response
 type PaymentAdviser struct {
 	Advise string `json:"advise"`
 }
 
+// Fee to represent status response
 type Fee struct {
 	Amount   int    `json:"amount"`
 	Currency string `json:"currency"`
 }
 
+// Chargeback to represent chargeback in response
 type Chargeback struct {
 	ID             int    `json:"id"`
 	DisputeDate    string `json:"dispute_date"`

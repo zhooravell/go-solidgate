@@ -6,6 +6,7 @@ import (
 	"net/url"
 )
 
+// InitPaymentRequest structure to represent init payment request data
 // https://solidgate.atlassian.net/wiki/spaces/API/pages/4718775/InitPayment+transaction
 type InitPaymentRequest struct {
 	amount                    int
@@ -22,6 +23,7 @@ type InitPaymentRequest struct {
 	chargebackNotificationURL *url.URL
 }
 
+// SetChargebackNotificationURL to set url
 // Set URL of merchant page, which a customer will be redirected in case successful payment
 func (rcv *InitPaymentRequest) SetChargebackNotificationURL(url *url.URL) *InitPaymentRequest {
 	rcv.chargebackNotificationURL = url
@@ -29,6 +31,8 @@ func (rcv *InitPaymentRequest) SetChargebackNotificationURL(url *url.URL) *InitP
 	return rcv
 }
 
+
+// SetCallbackURL to set url
 // Set URL of merchant page, where response with payment result will be sent
 func (rcv *InitPaymentRequest) SetCallbackURL(url *url.URL) *InitPaymentRequest {
 	rcv.callbackURL = url
@@ -36,13 +40,14 @@ func (rcv *InitPaymentRequest) SetCallbackURL(url *url.URL) *InitPaymentRequest 
 	return rcv
 }
 
-//
+// SetSuccessURL to set url
 func (rcv *InitPaymentRequest) SetSuccessURL(url *url.URL) *InitPaymentRequest {
 	rcv.successURL = url
 
 	return rcv
 }
 
+// SetFailURL to set url
 // Set URL of merchant page, which a customer will be redirected in case of not successful payment
 func (rcv *InitPaymentRequest) SetFailURL(failURL *url.URL) *InitPaymentRequest {
 	rcv.failURL = failURL
@@ -50,7 +55,7 @@ func (rcv *InitPaymentRequest) SetFailURL(failURL *url.URL) *InitPaymentRequest 
 	return rcv
 }
 
-// Constructor for InitPaymentRequest
+// NewInitPaymentRequest return InitPaymentRequest with mandatory parameters
 func NewInitPaymentRequest(
 	amount int,
 	currency string,
