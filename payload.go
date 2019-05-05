@@ -49,7 +49,7 @@ func newInitPaymentRequestPayload(r *InitPaymentRequest) *initPaymentRequestPayl
 		Currency:         r.currency,
 		OrderID:          r.orderID,
 		OrderDescription: r.orderDescription,
-		CustomerEmail:    r.customerEmail.String(),
+		CustomerEmail:    r.customerEmail.Address,
 		GeoCountry:       r.geoCountry,
 		IPAddress:        r.ipAddress.String(),
 		Platform:         r.platform,
@@ -125,6 +125,7 @@ func newChargeRequestPayload(r *ChargeRequest) *chargeRequestPayload {
 type recurringRequestPayload struct {
 	Amount           int    `json:"amount"`
 	Currency         string `json:"currency"`
+	RecurringToken   string `json:"recurring_token"`
 	OrderID          string `json:"order_id"`
 	OrderDescription string `json:"order_description"`
 	CustomerEmail    string `json:"customer_email"`
@@ -138,9 +139,10 @@ func newRecurringRequestPayload(r *RecurringRequest) *recurringRequestPayload {
 	p := &recurringRequestPayload{
 		Amount:           r.amount,
 		Currency:         r.currency,
+		RecurringToken:   r.recurringToken,
 		OrderID:          r.orderID,
 		OrderDescription: r.orderDescription,
-		CustomerEmail:    r.customerEmail.String(),
+		CustomerEmail:    r.customerEmail.Address,
 		IPAddress:        r.ipAddress.String(),
 		Platform:         r.platform,
 	}

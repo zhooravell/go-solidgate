@@ -98,7 +98,7 @@ func TestNewInitPaymentRequestPayload(t *testing.T) {
 		t.Error(err)
 	}
 
-	expected := `{"amount":2575,"currency":"USD","order_id":"777","order_description":"Premium package","customer_email":"\u003cexample.user@example-email.com\u003e","geo_country":"GBR","ip_address":"8.8.8.8","platform":"WEB","fail_url":"http://merchant.example/fail","success_url":"http://merchant.example/success","callback_url":"http://merchant.example/callback","chargeback_notification_url":"http://merchant.example/chargeback"}`
+	expected := `{"amount":2575,"currency":"USD","order_id":"777","order_description":"Premium package","customer_email":"example.user@example-email.com","geo_country":"GBR","ip_address":"8.8.8.8","platform":"WEB","fail_url":"http://merchant.example/fail","success_url":"http://merchant.example/success","callback_url":"http://merchant.example/callback","chargeback_notification_url":"http://merchant.example/chargeback"}`
 	actual := string(j)
 
 	if expected != actual {
@@ -229,7 +229,7 @@ func TestNewRecurringRequestPayload(t *testing.T) {
 		t.Error(err)
 	}
 
-	expected := `{"amount":2575,"currency":"USD","order_id":"777","order_description":"Premium package","customer_email":"\u003cexample.user@example-email.com\u003e","ip_address":"8.8.8.8","platform":"WEB","status_url":"http://merchant.example/status","callback_url":"http://merchant.example/callback","chargeback_notification_url":"http://merchant.example/chargeback"}`
+	expected := `{"amount":2575,"currency":"USD","recurring_token":"777","order_id":"777","order_description":"Premium package","customer_email":"example.user@example-email.com","ip_address":"8.8.8.8","platform":"WEB","status_url":"http://merchant.example/status","callback_url":"http://merchant.example/callback","chargeback_notification_url":"http://merchant.example/chargeback"}`
 	actual := string(j)
 
 	if expected != actual {
