@@ -9,10 +9,10 @@ SolidGate golang client
 ## Installing
 
 ``` sh
-$ go get https://github.com/zhooravell/solid-gate-go-client
+$ go get github.com/zhooravell/go-solidgate
 ```
 ``` sh
-$ dep ensure https://github.com/zhooravell/solid-gate-go-client
+$ dep ensure -add github.com/zhooravell/go-solidgate
 ```
 ## Source(s)
 
