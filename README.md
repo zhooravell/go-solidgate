@@ -14,6 +14,110 @@ $ go get github.com/zhooravell/go-solidgate
 ``` sh
 $ dep ensure -add github.com/zhooravell/go-solidgate
 ```
+
+## Using
+Initialize client
+``` go
+
+merchantID := "merchantID"
+privateKey := "privateKey"
+
+solidGateClient := solidgate.NewSolidGateClient(
+    merchantID,
+    &http.Client{},
+    solidgate.NewSha512Signer(merchantID, []byte(privateKey)),
+    "https://pay.signedpay.com/api/v1",
+)
+```
+InitPayment transaction
+``` go
+ip := net.ParseIP("8.8.8.8")
+email, _ := mail.ParseAddress("jondou@gmail.com")
+
+initPaymentRequest := solidgate.NewInitPaymentRequest(
+    1050,
+    "USD",
+    email,
+    "UKR",
+    &ip,
+    "Premium package",
+    "777",
+    "WEB",
+)
+
+initPaymentResponse, err := solidGateClient.InitPayment(context.Background(), initPaymentRequest)
+
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("%+v\n", initPaymentResponse)
+```
+Charge transaction
+``` go
+ip := net.ParseIP("8.8.8.8")
+email, _ := mail.ParseAddress("jondou@gmail.com")
+
+chargeRequest := solidgate.NewChargeRequest(
+    1050,
+    "USD",
+    "123",
+    "01",
+    "2024",
+    "JOHN SNOW",
+    "4111111111111111",
+    email,
+    "UKR",
+    &ip,
+    "Premium package",
+    "777",
+    "WEB",
+)
+
+chargeResponse, err := solidGateClient.Charge(context.Background(), chargeRequest)
+
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("%+v\n", chargeResponse)
+```
+Recurring transaction
+``` go
+ip := net.ParseIP("8.8.8.8")
+email, _ := mail.ParseAddress("jondou@gmail.com")
+
+recurringRequest := solidgate.NewRecurringRequest(
+    1050,
+    "USD",
+    "7ats8da7sd8-a66dfa7-a9s9das89t",
+    email,
+    &ip,
+    "Premium package",
+    "777",
+    "WEB",
+)
+
+recurringResponse, err := solidGateClient.Recurring(context.Background(), recurringRequest)
+
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("%+v\n", recurringResponse)
+```
+Refund transaction
+``` go
+refundRequest := solidgate.NewRefundRequest("777", 1050)
+refundResponse, err := solidGateClient.Refund(context.Background(), refundRequest)
+
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("%+v\n", refundResponse)
+```
+
 ## Source(s)
 
 * [SolidGate](https://solid.ng/)
