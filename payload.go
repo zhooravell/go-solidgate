@@ -79,10 +79,10 @@ func newInitPaymentRequestPayload(r *InitPaymentRequest) *initPaymentRequestPayl
 type chargeRequestPayload struct {
 	initPaymentRequestPayload
 	CardCvv      string `json:"card_cvv"`
-	CardExpMonth int    `json:"card_exp_month"`
-	CardExpYear  int    `json:"card_exp_year"`
+	CardExpMonth string `json:"card_exp_month"`
+	CardExpYear  string `json:"card_exp_year"`
 	CardHolder   string `json:"card_holder"`
-	CardNumber   int    `json:"card_number"`
+	CardNumber   string `json:"card_number"`
 }
 
 // Create charge payload from init charge request
@@ -93,7 +93,7 @@ func newChargeRequestPayload(r *ChargeRequest) *chargeRequestPayload {
 			Currency:         r.currency,
 			OrderID:          r.orderID,
 			OrderDescription: r.orderDescription,
-			CustomerEmail:    r.customerEmail.String(),
+			CustomerEmail:    r.customerEmail.Address,
 			GeoCountry:       r.geoCountry,
 			IPAddress:        r.ipAddress.String(),
 			Platform:         r.platform,

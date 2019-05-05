@@ -118,10 +118,10 @@ func TestNewChargeRequestPayload(t *testing.T) {
 		2575,
 		"USD",
 		"123",
-		12,
-		2019,
+		"12",
+		"2019",
 		"JOHN SNOW",
-		4111111111111111,
+		"4111111111111111",
 		customerEmail,
 		"GBR",
 		&ipAddress,
@@ -172,11 +172,11 @@ func TestNewChargeRequestPayload(t *testing.T) {
 		t.Error(err)
 	}
 
-	expected := `{"amount":2575,"currency":"USD","order_id":"777","order_description":"Premium package","customer_email":"\u003cexample.user@example-email.com\u003e","geo_country":"GBR","ip_address":"8.8.8.8","platform":"WEB","status_url":"http://merchant.example/status","callback_url":"http://merchant.example/callback","chargeback_notification_url":"http://merchant.example/chargeback","card_cvv":"123","card_exp_month":12,"card_exp_year":2019,"card_holder":"JOHN SNOW","card_number":4111111111111111}`
+	expected := `{"amount":2575,"currency":"USD","order_id":"777","order_description":"Premium package","customer_email":"example.user@example-email.com","geo_country":"GBR","ip_address":"8.8.8.8","platform":"WEB","status_url":"http://merchant.example/status","callback_url":"http://merchant.example/callback","chargeback_notification_url":"http://merchant.example/chargeback","card_cvv":"123","card_exp_month":"12","card_exp_year":"2019","card_holder":"JOHN SNOW","card_number":"4111111111111111"}`
 	actual := string(j)
 
 	if expected != actual {
-		t.Error("init payment request bad format")
+		t.Error("charge request bad format")
 	}
 }
 

@@ -14,10 +14,10 @@ type ChargeRequest struct {
 	orderID                   string
 	orderDescription          string
 	cardCvv                   string
-	cardExpMonth              int
-	cardExpYear               int
+	cardExpMonth              string
+	cardExpYear               string
 	cardHolder                string
-	cardNumber                int
+	cardNumber                string
 	customerEmail             *mail.Address
 	geoCountry                string
 	ipAddress                 *net.IP
@@ -56,10 +56,10 @@ func NewChargeRequest(
 	amount int,
 	currency string,
 	cardCvv string,
-	cardExpMonth int,
-	cardExpYear int,
+	cardExpMonth string,
+	cardExpYear string,
 	cardHolder string,
-	cardNumber int,
+	cardNumber string,
 	customerEmail *mail.Address,
 	geoCountry string,
 	ipAddress *net.IP,

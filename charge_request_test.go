@@ -16,10 +16,10 @@ func TestNewChargeRequest(t *testing.T) {
 	ipAddress := net.ParseIP("8.8.8.8")
 	platform := "WEB"
 	cardCvv := "123"
-	cardExpMonth := 12
-	cardExpYear := 2019
+	cardExpMonth := "12"
+	cardExpYear := "2019"
 	cardHolder := "JOHN SNOW"
-	cardNumber := 4111111111111111
+	cardNumber := "4111111111111111"
 	customerEmail, err := mail.ParseAddress("example.user@example-email.com")
 
 	if err != nil {
