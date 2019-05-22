@@ -52,7 +52,7 @@ func TestSolidGateClient_Charge(t *testing.T) {
       "currency": "USD",
       "card": {
         "bank": "STATE BANK",
-        "bin": "411111",
+        "bin": 411111,
         "brand": "VISA",
         "country": "USA",
         "number": "411111XXXXXX1111",
@@ -80,7 +80,7 @@ func TestSolidGateClient_Charge(t *testing.T) {
     "amount": 2575,
     "currency": "USD",
     "card": {
-      "bin": "411111",
+      "bin": 411111,
       "brand": "VISA",
       "country": "USA",
       "number": "411111XXXXXX1111",

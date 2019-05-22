@@ -41,7 +41,7 @@ func TestSolidGateClient_Recurring(t *testing.T) {
       "currency": "USD",
       "card": {
         "bank": "STATE BANK",
-        "bin": "444455",
+        "bin": 444455,
         "brand": "VISA",
         "country": "USA",
         "number": "444455XXXXXX6666",
@@ -72,7 +72,7 @@ func TestSolidGateClient_Recurring(t *testing.T) {
     "amount": 100,
     "currency": "USD",
     "card": {
-      "bin": "344940",
+      "bin": 344940,
       "bank": "NATIONWIDE BUILDING SOCIETY",
       "brand": "AMEX",
       "country": "USA",

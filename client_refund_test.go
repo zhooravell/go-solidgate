@@ -70,7 +70,7 @@ func TestSolidGateClient_Refund(t *testing.T) {
         "currency": "USD"
       },
       "card": {
-        "bin": "444455",
+        "bin": 444455,
         "brand": "VISA",
         "country": "USA",
         "number": "444455XXXXXX6666",

@@ -1,5 +1,7 @@
 package solidgate
 
+import "encoding/json"
+
 // InitPaymentResponse to represent init payment response
 type InitPaymentResponse struct {
 	Order   Order   `json:"order"`
@@ -62,15 +64,15 @@ type PayForm struct {
 
 // Card to represent card in response
 type Card struct {
-	Bank         string    `json:"bank"`
-	Bin          string    `json:"bin"`
-	Brand        string    `json:"brand"`
-	Country      string    `json:"country"`
-	Number       string    `json:"number"`
-	CardExpMonth string    `json:"card_exp_month"`
-	CardExpYear  int       `json:"card_exp_year"`
-	CardType     string    `json:"card_type"`
-	CardToken    CardToken `json:"card_token,omitempty"`
+	Bank         string      `json:"bank"`
+	Bin          json.Number `json:"bin,Number"`
+	Brand        string      `json:"brand"`
+	Country      string      `json:"country"`
+	Number       string      `json:"number"`
+	CardExpMonth string      `json:"card_exp_month"`
+	CardExpYear  int         `json:"card_exp_year"`
+	CardType     string      `json:"card_type"`
+	CardToken    CardToken   `json:"card_token,omitempty"`
 }
 
 // CardToken to represent card token in response

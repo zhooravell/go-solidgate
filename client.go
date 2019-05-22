@@ -12,7 +12,7 @@ import (
 	"net/url"
 )
 
-const version = "0.0.1"
+const version = "0.0.2"
 
 // https://solidgate.atlassian.net/wiki/spaces/API/pages/4718729/Host+to+host+API
 type Client interface {
