@@ -110,20 +110,3 @@ func TestSolidGateClient_Status(t *testing.T) {
 		t.Fail()
 	}
 }
-
-func TestSolidGateClient_StatusGateError(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		if _, err := w.Write([]byte(`{"error":{"code":"2.01","messages":{"currency":["This value should not be blank."]}}}`)); err != nil {
-			log.Println(err)
-		}
-	}))
-
-	defer server.Close()
-
-	res, err := createClient(server.URL, t).Status(context.Background(), NewStatusRequest("777"))
-
-	if err == nil || res != nil || err.Error() != "(2.01) currency: This value should not be blank." {
-		t.Fail()
-	}
-}
