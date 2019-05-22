@@ -81,10 +81,6 @@ func (rcv *solidGateClient) Status(ctx context.Context, r *StatusRequest) (*Stat
 		return nil, err
 	}
 
-	if err := extractErrorFromResponse(body); err != nil {
-		return nil, err
-	}
-
 	result := new(StatusResponse)
 
 	if err := json.Unmarshal(body, &result); err != nil {
